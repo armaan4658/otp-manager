@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {Switch, Route} from 'react-router-dom';
+import {NavComponent} from './components/nav.js';
+import {Link} from 'react-router-dom';
+import {HospitalOtp} from './components/hopitalOtp.js';
+import {UrlOtp} from './components/urlOtp.js';
+import {GdriveOtp} from './components/gdriveOtp';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{
+        background:'maroon',
+        height:'12vh',
+        display:'grid',
+        alignItems:'center'
+        }}>
+        <h1 className="logo"><Link to='/'>Otp manager</Link></h1>
+      </div>
+        <Switch>
+            <Route exact path='/'>
+              <NavComponent/>
+            </Route>
+            <Route path='/hospitalappotp'>
+              <HospitalOtp/>
+            </Route>
+            <Route path='/urlappotp'>
+              <UrlOtp/>
+            </Route>
+            <Route path='/gdriveappotp'>
+              <GdriveOtp/>
+            </Route>
+        </Switch>
     </div>
   );
 }
